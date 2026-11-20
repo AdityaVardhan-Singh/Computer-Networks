@@ -5,7 +5,7 @@
 **A complete record of my Computer Networks (CN) laboratory experiments** — Cisco Packet Tracer simulations, lab reports, and Python socket programs.
 
 ![Tool](https://img.shields.io/badge/Cisco-Packet%20Tracer-1BA0D7?logo=cisco&logoColor=white)
-![Language](https://img.shields.io/badge/Python-3-3776AB?logo=python&logoColor=white)
+
 
 </div>
 
@@ -65,13 +65,6 @@ Each experiment folder contains its **lab report (PDF)** and the **Cisco Packet 
 
 ---
 
-## 🛠 Tools & Requirements
-
-| Tool | Used for |
-|---|---|
-| [Cisco Packet Tracer](https://www.netacad.com/cisco-packet-tracer) | Network simulation (`.pkt` files) |
-| [Python 3](https://www.python.org/downloads/) | Socket programming (Experiments 10 & 11), standard library only, no `pip install` needed |
-| Any PDF viewer | Reading the lab reports |
 
 ---
 
