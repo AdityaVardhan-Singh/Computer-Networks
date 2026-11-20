@@ -9,30 +9,13 @@
 
 </div>
 
----
 
-## 👤 Student Information
-
-| | |
-|---|---|
-| **Name** | Harshit Jhamb |
-| **Roll No.** | 241210047 |
-| **Subject** | Computer Networks Lab (CN Lab) |
-| **GitHub** | [@241210047](https://github.com/241210047) |
-| **Repository** | [241210047/241210047_Networks](https://github.com/241210047/241210047_Networks) |
-
----
 
 ## 📑 Table of Contents
 
 - [Experiment Index](#-experiment-index)
 - [Repository Structure](#-repository-structure)
 - [Tools & Requirements](#-tools--requirements)
-- [How to Open the Simulations](#-how-to-open-the-simulations)
-- [Running the Python Programs](#-running-the-python-programs)
-  - [Experiment 10: TCP & UDP](#experiment-10--tcp--udp-client-server)
-  - [Experiment 11: Multi-client Server](#experiment-11--multi-client-socket-programming)
-- [Author](#-author)
 
 ---
 
@@ -92,62 +75,5 @@ Each experiment folder contains its **lab report (PDF)** and the **Cisco Packet 
 
 ---
 
-## 🖧 How to Open the Simulations
-
-1. Install **Cisco Packet Tracer** (free with a Cisco Networking Academy account).
-2. Clone the repo, or download the `.pkt` file you need:
-   ```bash
-   git clone https://github.com/241210047/241210047_Networks.git
-   ```
-3. Open the `.pkt` file in Packet Tracer (`File → Open`, or double-click it).
-
 ---
 
-## 🐍 Running the Python Programs
-
-All programs use the loopback address `127.0.0.1`. Start the **server first**, then the client, each in its own terminal.
-
-### Experiment 10 — TCP & UDP Client-Server
-
-[Open folder](10_TCP_UDP_Client_Server)
-
-| Protocol | Port | Terminal 1 (server) | Terminal 2 (client) |
-|---|:-:|---|---|
-| TCP (connection-oriented) | `5000` | `python3 tcp_server.py` | `python3 tcp_client.py` |
-| UDP (connectionless) | `6000` | `python3 udp_server.py` | `python3 udp_client.py` |
-
-```bash
-cd 10_TCP_UDP_Client_Server
-python3 tcp_server.py      # terminal 1
-python3 tcp_client.py      # terminal 2
-```
-
-The client sends a greeting and the server replies with `ACK: <message>`. TCP shows the three-way handshake (`connect` / `accept`); UDP sends a datagram with no connection setup.
-
-### Experiment 11 — Multi-client Socket Programming
-
-[Open folder](11_Socket_Programming)
-
-A threaded TCP server on port `7000` that handles one thread per client, welcomes each client by name, and returns their message in UPPERCASE. It serves three clients and then stops.
-
-```bash
-cd 11_Socket_Programming
-python3 threaded_server.py                      # terminal 1
-python3 client.py Alice "hello network"         # terminal 2
-python3 client.py Bob   "second client"         # terminal 3
-```
-
-`client.py` takes optional arguments: `[name] [message]`.
-
-<div align="right"><a href="#-computer-networks-lab">⬆ back to top</a></div>
-
----
-
-## ✍️ Author
-
-**Harshit Jhamb** · Roll No. **241210047**
-
-[![GitHub](https://img.shields.io/badge/GitHub-241210047-181717?logo=github)](https://github.com/241210047)
-[![Repo](https://img.shields.io/badge/Repo-241210047__CN-blue?logo=github)](https://github.com/241210047/241210047_Networks)
-
-<sub>Made for the Computer Networks Lab. Please use these files for reference and learning.</sub>
