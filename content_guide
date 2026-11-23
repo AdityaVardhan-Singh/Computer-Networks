@@ -1,0 +1,1230 @@
+Understood. You want a monumental, zero-to-hero, step-by-step masterclass for each experiment. No skipping steps. No assumptions. If a beginner who has never opened Packet Tracer before reads this, they should be able to build it perfectly.
+
+Let's start with Experiment 5: Connect the Computers in Local Area Network.
+
+Here is the ultimate beginner's guide.
+
+Experiment 5: Connect the Computers in Local Area Network
+Objective: To build a Local Area Network (LAN) with two computers and a switch, assign IP addresses, and verify connectivity.
+
+Phase 1: The Setup (Opening the Software)
+Launch Cisco Packet Tracer.
+
+You will be greeted with a blank white workspace. Look at the bottom left corner of the screen. You will see a box with several icons (Routers, Switches, End Devices, Connections, etc.). This is your Device Palette.
+
+Look at the top left corner. You will see a row of icons. The one that looks like a black arrow (Select Tool) is currently active. This is your mouse.
+
+Phase 2: Adding the Devices
+Add the Switch:
+
+In the bottom left palette, click on the Network Devices icon (it looks like a green router/switch).
+
+In the sub-menu that appears, click on Switches.
+
+You will see a list of switches. Click and hold the 2960 switch, and drag it into the middle of the white workspace.
+
+Add the PCs:
+
+In the bottom left palette, click on the End Devices icon (it looks like a computer monitor).
+
+Click and hold the PC-PT device, and drag it to the left side of the switch.
+
+Click and hold another PC-PT, and drag it to the right side of the switch.
+
+You now have PC0, PC1, and Switch0 on your screen.
+
+Phase 3: Connecting the Devices (The Cables)
+Rule: Connecting a PC to a Switch requires a Straight-Through cable.
+
+In the bottom left palette, click the Connections icon (the orange lightning bolt).
+
+You will see different cable types. Click the Copper Straight-Through cable (the solid black line).
+
+Connect PC0:
+
+Click on PC0. A menu will pop up showing its ports. Click FastEthernet0.
+
+Now, click on the Switch. A menu will pop up. Click FastEthernet0/1.
+
+Connect PC1:
+
+The Straight-Through cable should still be selected. If not, click the lightning bolt and select it again.
+
+Click on PC1. Select FastEthernet0.
+
+Click on the Switch. Select FastEthernet0/2.
+
+The "Waiting Game": Look at the cables. You will see little red triangles on the ends. Wait 10-15 seconds. The switch is running a protocol (Spanning Tree) to make sure there are no loops. The red triangles will turn green. (If they stay red, the cable is loose or the switch hasn't finished booting).
+
+Phase 4: Configuring IP Addresses (PC0)
+Rule: For the PCs to talk, they must be on the same network (e.g., 192.168.1.x) and have the same Subnet Mask.
+
+Click on PC0. A window will pop up.
+
+Click on the Desktop tab at the top of the window.
+
+Click on the IP Configuration button.
+
+You will see a form. Fill it out exactly like this:
+
+IP Address: 192.168.1.1 (The first PC gets .1)
+
+Subnet Mask: 255.255.255.0 (Click inside this box, and it will auto-fill).
+
+Default Gateway: Leave this blank. (A gateway is only needed when routing to another network, which we will do in Exp 6).
+
+Close the PC0 window.
+
+Phase 5: Configuring IP Addresses (PC1)
+Click on PC1.
+
+Go to the Desktop tab > IP Configuration.
+
+Fill it out exactly like this:
+
+IP Address: 192.168.1.2 (The second PC gets .2)
+
+Subnet Mask: 255.255.255.0
+
+Default Gateway: Leave blank.
+
+Close the PC1 window.
+
+Phase 6: The Verification (The Ping Test)
+Rule: ping is a network utility used to test if a device can reach another device. It sends an ICMP Echo Request and waits for an Echo Reply.
+
+Click on PC0.
+
+Go to the Desktop tab.
+
+Click on the Command Prompt icon.
+
+A black window will appear with C:\>.
+
+Type this exactly and press Enter: ping 192.168.1.2
+
+What to expect:
+
+The first line might say Request timed out. This is normal. PC0 is asking "Who has 192.168.1.2?", and it takes a split second for the switch to find PC1 (ARP).
+
+The next 3 lines should say Reply from 192.168.1.2: bytes=32 time=1ms TTL=128.
+
+You should see a Ping statistics summary: Packets: Sent = 4, Received = 4, Lost = 0 (0% loss).
+
+Do not close this window. Leave it open.
+
+Phase 7: Making the File Look Professional (For Grading)
+Look at the top toolbar. Find the Place Note icon (it looks like a little yellow sticky note).
+
+Click it, and then click on the white workspace directly under PC0.
+
+Type:
+PC0
+IP: 192.168.1.1
+Mask: 255.255.255.0
+
+Click the Select Tool (the black arrow at the top left) to stop typing.
+
+Repeat the process and place a note under PC1:
+PC1
+IP: 192.168.1.2
+Mask: 255.255.255.0
+
+Optional: Double-click the notes to change the text color (blue for IPs looks great).
+
+Save the File: Go to File > Save As.
+
+Name it Exp_05_LAN.pkt.
+
+Click Save.
+
+💡 Troubleshooting (If things go wrong)
+The triangles are red: Click the "Fast Forward Time" button (the clock with a play button at the bottom left of the screen). If they stay red, delete the cable (click the red X icon, then click the cable) and re-connect it.
+
+Ping says "Destination host unreachable": Your IP addresses are wrong. Check that PC0 is 192.168.1.1 and PC1 is 192.168.1.2. They must match the Subnet Mask 255.255.255.0.
+
+Ping says "Request timed out" for all 4 packets: You might have connected the PCs using a Crossover cable instead of a Straight-Through cable. Delete the cables and try again with the solid black line.
+
+Let me know when you have successfully built this and seen the green triangles and successful ping! Once you confirm, I will write out this exact same, highly-detailed, beginner-proof guide for Experiment 6 (Router Configuration).
+
+experiement 6
+Here is the ultimate, zero-to-hero guide for Experiment 6.
+
+This guide assumes you are starting with a completely blank Packet Tracer file.
+
+Experiment 6: Router Configuration using Packet Tracer
+Objective: To connect two different networks using a router, configure the router's interfaces via the CLI (Command Line Interface), and verify end-to-end connectivity.
+
+Phase 1: Adding the Devices
+Open a brand new blank file in Packet Tracer (File > New).
+
+Add the Router:
+
+Bottom left palette > Network Devices > Routers.
+
+Drag the 1941 router to the middle of the workspace.
+
+Add the Switches:
+
+Bottom left palette > Network Devices > Switches.
+
+Drag two 2960 switches into the workspace. Place one on the left, one on the right.
+
+Add the PCs:
+
+Bottom left palette > End Devices.
+
+Drag two PC-PT devices. Place one far left, one far right.
+
+Phase 2: Cabling the Network
+Rule: Use Copper Straight-Through cables to connect different devices (PC to Switch, Switch to Router).
+
+Click the Connections icon (orange lightning bolt) > select Copper Straight-Through (solid black line).
+
+Left Side Connections:
+
+Click PC0 > select FastEthernet0 > click the Left Switch > select FastEthernet0/1.
+
+Click the Left Switch > select FastEthernet0/2 > click the Router > select GigabitEthernet0/0. (Note: 1941 routers use Gigabit ports, not FastEthernet).
+
+Right Side Connections:
+
+Click PC1 > select FastEthernet0 > click the Right Switch > select FastEthernet0/1.
+
+Click the Right Switch > select FastEthernet0/2 > click the Router > select GigabitEthernet0/1.
+
+The Waiting Game: You will see red triangles on the cables connecting to the router. This is normal. Router interfaces are shut down by default. We will turn them on in Phase 4.
+
+Phase 3: Configuring the PCs (IP Addressing)
+Rule: The PCs need an IP address, Subnet Mask, and a Default Gateway. The Gateway is the router's IP address, which acts as the "door" to the other network.
+
+Configure PC0:
+
+Click PC0 > Desktop tab > IP Configuration.
+
+IP Address: 192.168.1.1
+
+Subnet Mask: 255.255.255.0 (Press Tab to auto-fill).
+
+Default Gateway: 192.168.1.2 (This is the router's Left IP, which we will set next).
+
+Close the window.
+
+Configure PC1:
+
+Click PC1 > Desktop tab > IP Configuration.
+
+IP Address: 192.168.2.1
+
+Subnet Mask: 255.255.255.0
+
+Default Gateway: 192.168.2.2 (This is the router's Right IP).
+
+Close the window.
+
+Phase 4: Configuring the Router (The CLI)
+Rule: You must assign an IP address to the router interfaces and issue the no shutdown command to turn them on.
+
+Click on the Router.
+
+Go to the CLI tab.
+
+If it asks "Would you like to enter the initial configuration dialog?", type no and press Enter.
+
+Press Enter again to get to the Router> prompt.
+
+Type the following commands exactly. Press Enter after every single line.
+
+text
+enable
+configure terminal
+interface GigabitEthernet0/0
+ip address 192.168.1.2 255.255.255.0
+no shutdown
+exit
+interface GigabitEthernet0/1
+ip address 192.168.2.2 255.255.255.0
+no shutdown
+exit
+Watch the lights: As soon as you type the first no shutdown, you should see a message say %LINK-5-CHANGED: Interface GigabitEthernet0/0, changed state to up. Look at your topology; the red triangles on the left side should now be green. After the second no shutdown, the right side will turn green.
+
+Phase 5: The Verification (The Ping Test)
+Rule: We are testing if PC0 (on Network 1) can reach PC1 (on Network 2) through the router.
+
+Click PC0 > Desktop > Command Prompt.
+
+Type ping 192.168.2.1 and press Enter.
+
+What to expect:
+
+The first packet will likely say Request timed out. (The router needs to use ARP to find PC1's MAC address).
+
+The next three packets should say Reply from 192.168.2.1...
+
+You should see Packets: Sent = 4, Received = 3, Lost = 1 (25% loss).
+
+Leave this Command Prompt window open.
+
+Phase 6: Making the File Look Professional
+Click the Place Note icon (sticky note at the top).
+
+Click under PC0 and type: PC0: 192.168.1.1 (GW: 192.168.1.2)
+
+Click the black arrow to stop typing.
+
+Place another note under PC1: PC1: 192.168.2.1 (GW: 192.168.2.2)
+
+Place a note under the Router: Router: Gig0/0 = 192.168.1.2 | Gig0/1 = 192.168.2.2
+
+Save the file: File > Save As > Name it Exp_06_Router_Config.pkt.
+
+💡 Troubleshooting (If things go wrong)
+The triangles stay red after no shutdown: Ensure you typed the interface name correctly. It is GigabitEthernet0/0, not FastEthernet0/0.
+
+Ping says "Destination host unreachable": You forgot to put the Default Gateway in the PC configuration. Go back to Phase 3 and make sure 192.168.1.2 is in PC0's Gateway and 192.168.2.2 is in PC1's Gateway.
+
+Ping completely fails: Check your cables. Did you connect the Left Switch to Gig0/0 and the Right Switch to Gig0/1? If you mixed them up, the IP addresses won't match the network.
+
+Let me know when you have successfully completed this. Once you confirm the 3 successful replies on your screen, tell me, and I will generate the exact same masterclass guide for Experiment 7!
+
+experiment 7
+Here is the ultimate, zero-to-hero guide for Experiment 7.
+
+Because Experiment 7 is almost identical to Experiment 6 physically, this guide will focus heavily on how to build it, why the IP addresses are different, and how to configure it perfectly so you get full marks.
+
+Experiment 7: Establish Peer-to-Peer Network Connection (Using Switch and Router)
+Objective: To establish a connection between two separate LANs using a single router, applying real-world IP addressing standards (where routers get the .1 address and PCs get .10).
+
+Phase 1: Adding the Devices
+Open a brand new blank file in Packet Tracer (File > New).
+
+Add the Router:
+
+Bottom left palette > Network Devices > Routers.
+
+Drag the 1941 router to the middle.
+
+Add the Switches:
+
+Bottom left palette > Network Devices > Switches.
+
+Drag two 2960 switches (one left, one right).
+
+Add the PCs:
+
+Bottom left palette > End Devices.
+
+Drag two PC-PT devices (one far left, one far right).
+
+Phase 2: Cabling the Network
+Click the Connections icon (orange lightning bolt) > select Copper Straight-Through (solid black line).
+
+Left Side:
+
+PC0 (FastEthernet0) --- Left Switch (FastEthernet0/1).
+
+Left Switch (FastEthernet0/2) --- Router (GigabitEthernet0/0).
+
+Right Side:
+
+PC1 (FastEthernet0) --- Right Switch (FastEthernet0/1).
+
+Right Switch (FastEthernet0/2) --- Router (GigabitEthernet0/1).
+
+The router cables will have red triangles. This is normal; routers are shut down by default.
+
+Phase 3: Configuring the PCs (Notice the IP Change!)
+Rule: In a Peer-to-Peer setup, the router takes the first usable IP (.1), and the PCs take the .10 addresses.
+
+Configure PC0:
+
+Click PC0 > Desktop tab > IP Configuration.
+
+IP Address: 192.168.1.10
+
+Subnet Mask: 255.255.255.0
+
+Default Gateway: 192.168.1.1 (The router's left IP).
+
+Configure PC1:
+
+Click PC1 > Desktop tab > IP Configuration.
+
+IP Address: 192.168.2.10
+
+Subnet Mask: 255.255.255.0
+
+Default Gateway: 192.168.2.1 (The router's right IP).
+
+Phase 4: Configuring the Router (The CLI)
+Click the Router > CLI tab. (Type no if asked for initial config).
+
+Press Enter to get to Router>.
+
+Type these commands exactly:
+
+text
+enable
+configure terminal
+interface GigabitEthernet0/0
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+exit
+interface GigabitEthernet0/1
+ip address 192.168.2.1 255.255.255.0
+no shutdown
+exit
+(Wait for the red triangles to turn green).
+
+Phase 5: The Verification (The Ping Test)
+Click PC0 > Desktop > Command Prompt.
+
+Type ping 192.168.2.10 and press Enter.
+
+What to expect:
+
+The first packet may say Request timed out (normal ARP resolution).
+
+The next 3 should say Reply from 192.168.2.10...
+
+You should see Packets: Sent = 4, Received = 3, Lost = 1 (25% loss).
+
+Leave this Command Prompt window open.
+
+Phase 6: Making the File Look Professional (The Lab Manual Standard)
+Since Experiment 7 is about understanding the network layout, your instructor will want to see the IP scheme clearly documented on the workspace.
+
+Click the Place Note icon (sticky note at the top).
+
+Click directly under PC0 and type:
+PC0
+IP: 192.168.1.10
+Gateway: 192.168.1.1
+
+Click the black mouse arrow to stop typing.
+
+Do the exact same thing under PC1:
+PC1
+IP: 192.168.2.10
+Gateway: 192.168.2.1
+
+Place a note under the Router:
+Router0
+Gig0/0: 192.168.1.1
+Gig0/1: 192.168.2.1
+
+Save the file: File > Save As > Name it Exp_07_Peer_to_Peer.pkt.
+
+💡 Understanding the "Why" (For your Lab Report)
+If your instructor asks you, "Why did we do Exp 6 and Exp 7 if they are the same?" Here is the answer:
+
+Experiment 6 was about learning how to configure a router from scratch (turning on the ports, typing the CLI commands).
+
+Experiment 7 is about learning network design standards. In the real world, routers almost always get the .1 address, and client devices get .10, .20, .100, etc. This lab proves you know how to design a standard Peer-to-Peer network layout.
+
+Once you complete this and confirm the ping is successful, let me know, and I will give you the monumental, zero-to-hero guide for Experiment 8 (NAT)!
+
+experiement 8
+Here is the ultimate, zero-to-hero guide for Experiment 8.
+
+This is the most visually impressive lab in the manual. It simulates a real corporate network (with multiple PCs) accessing the public internet (simulated by servers) through a single public IP address using a router.
+
+Experiment 8: Examine Network Address Translation (NAT)
+Objective: To configure NAT Overload (PAT) on a router, allowing multiple private IP addresses on a LAN to share a single public IP address to reach the internet.
+
+Phase 1: Adding the Devices
+Open a brand new blank file in Packet Tracer.
+
+Add the Router:
+
+Network Devices > Routers > Drag 1 (1941) router to the middle.
+
+Add the Switches:
+
+Network Devices > Switches > Drag 2 (2960) switches (one left, one right).
+
+Add the End Devices:
+
+End Devices > Drag 3 PCs and 1 Laptop to the left side.
+
+End Devices > Drag 2 Servers (Server-PT) to the right side.
+
+Phase 2: Cabling the Network
+Rule: Use Copper Straight-Through cables for all connections in this lab.
+
+Click the Connections icon (lightning bolt) > Copper Straight-Through.
+
+Left Side (Corporate LAN):
+
+Connect the 3 PCs and the Laptop to the Left Switch (use ports Fa0/1, Fa0/2, Fa0/3, Fa0/4).
+
+Connect the Left Switch (GigabitEthernet0/1) to the Router (GigabitEthernet0/0).
+
+Right Side (Internet/Data Center):
+
+Connect Server0 to the Right Switch (Fa0/1).
+
+Connect Server1 to the Right Switch (Fa0/2).
+
+Connect the Right Switch (GigabitEthernet0/1) to the Router (GigabitEthernet0/1).
+
+The router cables will have red triangles until we configure the router.
+
+Phase 3: Configuring the Private Devices (Inside Network)
+Rule: All internal devices must be on the same network (192.168.1.x) and use the router's inside IP as their Gateway.
+
+PC0: Desktop > IP Configuration > IP: 192.168.1.10 | Mask: 255.255.255.0 | Gateway: 192.168.1.1
+
+PC1: Desktop > IP Configuration > IP: 192.168.1.11 | Mask: 255.255.255.0 | Gateway: 192.168.1.1
+
+PC2: Desktop > IP Configuration > IP: 192.168.1.12 | Mask: 255.255.255.0 | Gateway: 192.168.1.1
+
+Laptop0: (Go to Config tab > FastEthernet0 on the left. If it says "Port Status: Off", click it to turn it ON. Then go to Desktop > IP Config). IP: 192.168.1.13 | Mask: 255.255.255.0 | Gateway: 192.168.1.1
+
+Phase 4: Configuring the Public Devices (Outside Network)
+Rule: The servers simulating the internet must have public IPs (e.g., 200.1.1.x) and use the router's outside IP as their Gateway.
+
+Server0: Desktop > IP Configuration > IP: 200.1.1.10 | Mask: 255.255.255.0 | Gateway: 200.1.1.1
+
+Server1: Desktop > IP Configuration > IP: 200.1.1.11 | Mask: 255.255.255.0 | Gateway: 200.1.1.1
+
+Phase 5: Basic Router Setup
+Click the Router > CLI tab. (Type no if asked).
+
+Type these commands to assign IP addresses and turn the ports on:
+
+text
+enable
+configure terminal
+interface GigabitEthernet0/0
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+exit
+interface GigabitEthernet0/1
+ip address 200.1.1.1 255.255.255.0
+no shutdown
+exit
+(Wait for the red triangles to turn green).
+
+Phase 6: The "Before NAT" Test (Crucial for your report)
+Click PC0 > Desktop > Command Prompt.
+
+Type ping 200.1.1.10 and press Enter.
+
+It will fail (Request timed out).
+
+Why? Because Server0 is on the public internet. When it tries to reply to PC0 (192.168.1.10), the public network doesn't know where that private IP is. It drops the packet. This proves we need NAT. Close the command prompt.
+
+Phase 7: Configuring NAT (The Magic Step)
+Go back to the Router CLI.
+
+Type the following commands exactly, pressing Enter after each line:
+
+text
+configure terminal
+interface GigabitEthernet0/0
+ip nat inside
+exit
+interface GigabitEthernet0/1
+ip nat outside
+exit
+access-list 1 permit 192.168.1.0 0.0.0.255
+ip nat inside source list 1 interface GigabitEthernet0/1 overload
+exit
+Phase 8: The "After NAT" Test
+Go back to PC0 > Command Prompt.
+
+Type ping 200.1.1.10 and press Enter.
+
+What to expect: The first packet may time out (normal ARP). The next 3 should say Reply from 200.1.1.10... This means NAT is working!
+
+Phase 9: The Proof (Viewing the NAT Table)
+Go to the Router CLI.
+
+Type show ip nat translations and press Enter.
+
+What you will see: A table showing that 192.168.1.10 (your private PC) is being translated to 200.1.1.1 (the router's public IP) using different port numbers.
+
+Leave this CLI window open.
+
+Phase 10: Make the File Look Incredible (For Grading)
+Add Notes: Use the Place Note tool (sticky note at the top) to label the devices.
+
+Under PC0: PC0: 192.168.1.10 (GW: .1)
+
+Under Server0: Server0: 200.1.1.10 (GW: .1)
+
+Under the Router: NAT Router: Inside=192.168.1.1 | Outside=200.1.1.1
+
+Leave Windows Open: Make sure the Router CLI (showing the show ip nat translations table) and PC0's Command Prompt (showing the successful ping) are both open on your screen.
+
+Save the file: File > Save As > Name it Exp_08_NAT.pkt.
+
+💡 Troubleshooting
+Ping fails even after NAT: Make sure you typed ip nat inside on Gig0/0 and ip nat outside on Gig0/1. If you mix them up, NAT will break.
+
+Access List error: Make sure you type the wildcard mask 0.0.0.255 (with the dots) correctly. It is not a regular subnet mask.
+
+The show ip nat translations table is empty: You probably waited too long after pinging. The table clears after a few minutes. Run a new ping from PC0 and immediately check the table again.
+
+Once you complete this and see the NAT translation table populate, let me know, and I will give you the monumental, zero-to-hero guide for Experiment 9 (The massive OSPF Routing lab)!
+
+exp9
+Here is the monumental, zero-to-hero guide for Experiment 9.
+
+This is the biggest lab in the manual. You are building a "Triangle" of 3 routers, 3 switches, and multiple PCs. You will configure OSPF (Open Shortest Path First) so that all the routers automatically share their routes and every PC can talk to every other PC.
+
+Experiment 9: Simulate the Implementation of Various Routing Protocols (OSPF)
+Objective: To configure a multi-router network using OSPF so that routers dynamically learn routes and PCs in different LANs can communicate.
+
+Phase 1: Adding the Devices
+Open a brand new blank file in Packet Tracer.
+
+Add 3 Routers: Network Devices > Routers > Drag 3 (1941) routers. Arrange them in a triangle (Top Left, Top Right, Bottom Middle). We will call them R1, R2, and R3.
+
+Add 3 Switches: Network Devices > Switches > Drag 3 (2960) switches. Place one next to each router.
+
+Add 3 PCs: End Devices > Drag 3 PCs. Place one next to each switch.
+
+Phase 2: The "Extra Port" Hack (CRITICAL STEP)
+Rule: The 1941 router only has Gig0/0 and Gig0/1. To connect it to two other routers and a switch, we need a third port (Gig0/2).
+
+Click on Router 1.
+
+Go to the Physical tab.
+
+Click the green Power Switch on the router image (it will turn off).
+
+On the left side, under "Modules", find GLC-T. Click and drag it into the empty black slot on the right side of the router.
+
+Click the Power Switch again to turn it back on.
+
+Repeat this for Router 2 and Router 3. (You now have Gig0/0, Gig0/1, and Gig0/2 on all routers).
+
+Phase 3: Cabling the Network
+LAN Cables (Copper Straight-Through - solid black line):
+
+PC0 (Fa0) --- Switch0 (Fa0/1)
+
+PC1 (Fa0) --- Switch1 (Fa0/1)
+
+PC2 (Fa0) --- Switch2 (Fa0/1)
+
+Switch0 (Gig0/1) --- R1 (Gig0/0)
+
+Switch1 (Gig0/1) --- R2 (Gig0/0)
+
+Switch2 (Gig0/1) --- R3 (Gig0/0)
+
+Router Cables (Copper CROSSOVER - dashed black line):
+
+R1 (Gig0/1) --- R2 (Gig0/1)
+
+R2 (Gig0/2) --- R3 (Gig0/2)
+
+R3 (Gig0/1) --- R1 (Gig0/2)
+
+Phase 4: IP Addressing Scheme
+Rule: We use 192.168.x.0/24 for LANs and 10.x.x.0/24 for router-to-router links.
+Configure the PCs:
+
+PC0: IP: 192.168.1.10 | Mask: 255.255.255.0 | GW: 192.168.1.1
+
+PC1: IP: 192.168.2.10 | Mask: 255.255.255.0 | GW: 192.168.2.1
+
+PC2: IP: 192.168.3.10 | Mask: 255.255.255.0 | GW: 192.168.3.1
+
+Phase 5: Basic Router Configuration
+Go to the CLI of each router and configure the interfaces.
+
+R1 (Top Left):
+
+text
+enable
+configure terminal
+interface Gig0/0
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+exit
+interface Gig0/1
+ip address 10.1.1.1 255.255.255.0
+no shutdown
+exit
+interface Gig0/2
+ip address 10.3.3.1 255.255.255.0
+no shutdown
+exit
+R2 (Top Right):
+
+text
+enable
+configure terminal
+interface Gig0/0
+ip address 192.168.2.1 255.255.255.0
+no shutdown
+exit
+interface Gig0/1
+ip address 10.1.1.2 255.255.255.0
+no shutdown
+exit
+interface Gig0/2
+ip address 10.2.2.1 255.255.255.0
+no shutdown
+exit
+R3 (Bottom Middle):
+
+text
+enable
+configure terminal
+interface Gig0/0
+ip address 192.168.3.1 255.255.255.0
+no shutdown
+exit
+interface Gig0/1
+ip address 10.3.3.2 255.255.255.0
+no shutdown
+exit
+interface Gig0/2
+ip address 10.2.2.2 255.255.255.0
+no shutdown
+exit
+(Wait for all red triangles to turn green).
+
+Phase 6: The "Before OSPF" Test
+Go to PC0 > Desktop > Command Prompt.
+
+Type ping 192.168.2.10 (PC1).
+
+It will fail. Why? R1 knows about LAN 1, but it doesn't know how to reach LAN 2 or LAN 3. We need OSPF to teach it.
+
+Phase 7: Configuring OSPF (The Magic Step)
+Rule: OSPF requires you to announce all the directly connected networks using the network command. The wildcard mask 0.0.0.255 tells the router to look at the first 3 numbers.
+
+On R1:
+
+text
+configure terminal
+router ospf 1
+network 192.168.1.0 0.0.0.255 area 0
+network 10.1.1.0 0.0.0.255 area 0
+network 10.3.3.0 0.0.0.255 area 0
+exit
+On R2:
+
+text
+configure terminal
+router ospf 1
+network 192.168.2.0 0.0.0.255 area 0
+network 10.1.1.0 0.0.0.255 area 0
+network 10.2.2.0 0.0.0.255 area 0
+exit
+On R3:
+
+text
+configure terminal
+router ospf 1
+network 192.168.3.0 0.0.0.255 area 0
+network 10.3.3.0 0.0.0.255 area 0
+network 10.2.2.0 0.0.0.255 area 0
+exit
+Phase 8: The "After OSPF" Test
+Wait about 30 seconds. OSPF needs time to exchange "Hello" packets and build its routing tables.
+
+Go to PC0 > Desktop > Command Prompt.
+
+Type ping 192.168.2.10 (PC1). It should succeed now!
+
+Type ping 192.168.3.10 (PC2). It should succeed too!
+
+Leave this Command Prompt window open.
+
+Phase 9: Make the File Look Professional
+Add Notes:
+
+Under PC0: LAN 1: 192.168.1.0/24
+
+Under PC1: LAN 2: 192.168.2.0/24
+
+Under PC2: LAN 3: 192.168.3.0/24
+
+Verify Routing Table (For your report): Go to the R1 CLI and type show ip route. You should see a list of routes marked with an O (which stands for OSPF), proving the router learned the other networks dynamically.
+
+Save the file: File > Save As > Name it Exp_09_Routing_Protocols.pkt.
+
+💡 Troubleshooting
+I don't have a Gig0/2 port: You skipped the Phase 2 "Extra Port" hack. Turn the router off, drag the GLC-T module in, and turn it back on.
+
+Ping still fails after OSPF: Ensure the network commands match your IP addresses exactly (e.g., 10.1.1.0 not 10.1.1.1).
+
+The show ip route command doesn't show O routes: OSPF might still be converging. Wait another 30 seconds, or type clear ip ospf process and press Enter, then type yes.
+
+why this exists
+This is a fantastic screenshot. You are seeing the red triangles on the dashed black line connecting your two routers.
+
+You are likely wondering: "I connected the cable, why is it not green like the others?"
+
+Here is exactly why this happens, and how to fix it:
+
+1. You are missing the "No Shutdown" Command
+In Packet Tracer (and real Cisco routers), all router interfaces are administratively shut down (turned off) by default for security. Even if the cable is physically plugged in perfectly, the router will not send any data out of it until you explicitly turn it on.
+
+The fix: You must go into the CLI of Router0 and Router1 and type no shutdown for the interfaces connected to that dashed cable. (If you look at my Phase 5 guide, those commands are there).
+
+2. The Crossover Cable is Correct!
+Notice how I specified a Copper Cross-Over cable (the dashed black line) for router-to-router connections? You used the correct cable! (Connecting two routers directly requires a crossover cable because they are "similar" devices).
+
+Side note: In modern Packet Tracer, Cisco routers actually have "Auto-MDIX" technology, which means a straight-through cable would also work. But using the dashed crossover cable is the technically correct way to show your instructor you know your cabling rules.
+
+3. Don't Panic if it Stays Red for a Moment
+Sometimes, even after you type no shutdown, the triangle might stay red for a few seconds while the routers negotiate the link speed and duplex. Just wait 10-15 seconds.
+
+How to Fix it Right Now:
+Click on Router0.
+
+Go to the CLI tab.
+
+Type:
+
+text
+enable
+configure terminal
+interface GigabitEthernet0/1
+no shutdown
+(Assuming Gig0/1 is the port you plugged the dashed cable into).
+
+Do the exact same thing on Router1.
+
+Once both routers have their ports turned on, the red triangles will turn green.
+
+(Keep going with the OSPF commands in Phase 7! Once OSPF is configured, you will be able to ping across those routers).
+
+all green still not wroking
+I see exactly what you have built. You have built a linear topology (PC0 -> Switch0 -> Router0 -> dashed cable -> Router1 -> Switch1 -> PC1).
+
+You are completely right: All the lights are green, which means the physical cables and no shutdown commands worked perfectly.
+
+However, there is a major difference between a physical connection (green light) and a logical route (data actually flowing). Here is why it's failing and how to fix it.
+
+Why is it failing?
+Since you have two routers in the middle, Router0 only knows about the Left side (192.168.1.x), and Router1 only knows about the Right side (192.168.2.x).
+When PC0 sends a ping to PC1, the packet reaches Router0. Router0 says, "I don't know where PC1 is, and I don't have a route to Router1's network," and it drops the packet.
+
+You need to either use a Routing Protocol (like OSPF) or a Static Route to tell the routers how to find each other.
+
+Before we do that, we must verify your IP addresses are correct. Because you built this as a straight line (not a triangle), the IP scheme changes slightly from the 3-router lab.
+
+Phase 1: Verify your IP Addresses
+Since you have a dashed line in the middle, you need a "transit network" between the routers.
+Here is exactly what your IP configuration should be:
+
+PC0: 192.168.1.10 | GW: 192.168.1.1
+
+Router0 (Gig0/0 - Left): 192.168.1.1 | Mask: 255.255.255.0
+
+Router0 (Gig0/1 - Right): 10.1.1.1 | Mask: 255.255.255.0 (This is the dashed link)
+
+Router1 (Gig0/0 - Left): 10.1.1.2 | Mask: 255.255.255.0 (This is the dashed link)
+
+Router1 (Gig0/1 - Right): 192.168.2.1 | Mask: 255.255.255.0
+
+PC1: 192.168.2.10 | GW: 192.168.2.1
+
+(If your routers don't have the 10.1.1.x addresses on the dashed link, that is the first thing you need to fix using the CLI interface Gig0/1 and ip address commands).
+
+Phase 2: Add OSPF (The Fix)
+We will use OSPF to tell the routers about each other's networks.
+
+Go to Router0 CLI and type:
+
+text
+enable
+configure terminal
+router ospf 1
+network 192.168.1.0 0.0.0.255 area 0
+network 10.1.1.0 0.0.0.255 area 0
+exit
+Go to Router1 CLI and type:
+
+text
+enable
+configure terminal
+router ospf 1
+network 192.168.2.0 0.0.0.255 area 0
+network 10.1.1.0 0.0.0.255 area 0
+exit
+Phase 3: The Test
+Go to PC0 > Desktop > Command Prompt.
+
+Type ping 192.168.2.10 (Make sure this matches PC1's actual IP).
+
+The first ping might fail (Request timed out) because OSPF takes about 10-30 seconds to exchange routing tables.
+
+Wait 30 seconds, then try the ping again. It should succeed!
+
+If it still fails after 30 seconds, tell me exactly what the ping error says (Destination host unreachable or Request timed out).
+
+request timed out
+"Request timed out" is actually a good sign—it means the packet made it out of PC0, but it got lost in the middle.
+
+Because you have a linear chain (PC0 -> Switch0 -> R0 -> R1 -> Switch1 -> PC1), we have to be very careful with the IP addresses on the dashed link. If Router0 and Router1 aren't in the same subnet on that dashed cable, they won't be able to pass the traffic.
+
+Let's run a quick diagnostic to find the exact break.
+
+Step 1: Check the Router CLI (Router0)
+Click on Router0.
+
+Go to the CLI tab.
+
+Type enable (press Enter), then type show ip interface brief (press Enter).
+
+Look at the screen. For GigabitEthernet0/1 (the port connected to the dashed cable), look at the IP Address and the Status.
+
+It should have an IP like 10.1.1.1 or 192.168.2.1 and say up / up.
+
+Now type ping 10.1.1.2 (or whatever IP you gave to Router1's dashed port).
+
+Did it reply? If not, the dashed cable's IP addresses are wrong.
+
+Step 2: Check the PC1 Gateway
+Click on PC1.
+
+Go to Desktop > IP Configuration.
+
+Look at the Default Gateway.
+
+Does it match Router1's LAN IP address?
+
+If Router1's Gig0/1 (LAN) is 192.168.2.1, then PC1's Gateway must be 192.168.2.1. If it is blank or says 192.168.1.1, the reply will never get back to PC1.
+
+Step 3: The Routing Table Check (The most common error)
+Go to Router0 > CLI.
+
+Type show ip route.
+
+You are looking for a line that says O 192.168.2.0/24 [110/2] via 10.1.1.2....
+
+If it is missing: The OSPF commands didn't take, or the network addresses in your OSPF network commands don't match the actual interface IP addresses.
+
+The Fastest Fix (If you just want it to work right now):
+If the dashed link IP addresses are confusing you, we can use Static Routes instead. It's simpler.
+
+On Router0 CLI:
+
+text
+enable
+configure terminal
+ip route 192.168.2.0 255.255.255.0 10.1.1.2
+(Note: Change 10.1.1.2 to whatever IP address you actually assigned to Router1's dashed port).
+
+On Router1 CLI:
+
+text
+enable
+configure terminal
+ip route 192.168.1.0 255.255.255.0 10.1.1.1
+(Note: Change 10.1.1.1 to whatever IP address you actually assigned to Router0's dashed port).
+
+Once you type those two static routes, go back to PC0 and ping PC1 (192.168.2.10). Let me know if it works!
+
+Ah! I see the problem immediately in your screenshot.
+
+Look at the IP address for GigabitEthernet0/0. It says 192.168.1.10.
+
+That is the IP address of a PC, not a router! In Exp 9, we established a golden rule: Routers get the .1 address (the gateway), and PCs get the .10 address.
+
+If your router is using 192.168.1.10, it is fighting with PC0 for the same IP address. This causes an "IP Conflict," and the network shuts down.
+
+Also, look at GigabitEthernet0/1. It says 10.2.2.2. This is the link to the other router. That means the other router (Router1) must be 10.2.2.1 for them to talk.
+
+Here is exactly how to fix this step-by-step so your ping works.
+
+Step 1: Fix Router0's IP Addresses
+Go to the CLI of Router0 (which is what is shown in your screenshot) and type this to fix the interface facing PC0:
+
+text
+enable
+configure terminal
+interface GigabitEthernet0/0
+ip address 192.168.1.1 255.255.255.0
+exit
+(Now the router is .1, and it will stop fighting with PC0).
+
+Step 2: Configure the Static Routes (The "Fast Fix")
+Since we know Router0's dashed port is 10.2.2.2, Router1's dashed port must be 10.2.2.1. Let's tell them how to find each other without relying on OSPF.
+
+Still in the Router0 CLI, type this:
+
+text
+ip route 192.168.2.0 255.255.255.0 10.2.2.1
+(This tells Router0: "To find the 192.168.2.x network, send the traffic out to your neighbor at 10.2.2.1").
+
+Step 3: Configure Router1
+Click on Router1.
+
+Go to the CLI.
+
+Type enable > configure terminal.
+
+Ensure Router1's ports are set up correctly:
+
+text
+interface GigabitEthernet0/1
+ip address 10.2.2.1 255.255.255.0
+no shutdown
+exit
+(Notice I made this .1 because Router0 is .2).
+
+Now tell Router1 how to find PC0's network:
+
+text
+ip route 192.168.1.0 255.255.255.0 10.2.2.2
+Step 4: The Final Test
+Go to PC0 > Desktop > Command Prompt.
+
+Type ping 192.168.2.10 (Assuming PC1 is .10).
+
+It should work!
+
+(Note: If your PC1 is actually on 192.168.2.x with a gateway of 192.168.2.1, make sure Router1's Gig0/0 interface is set to 192.168.2.1).
+
+Let me know if the ping succeeds now!
+
+done now next expeirmenet
+Fantastic! You successfully debugged an IP conflict and set up static routing. That is exactly what networking is about.
+
+You are moving on to Experiment 10: Connection-Oriented Client-Server Applications with TCP and UDP.
+
+This lab is completely different from the routers. We are going to build a small network with a Server and a Client. You will configure the Server to host a website (HTTP/TCP) and a DNS service (UDP), and then use a PC to access it.
+
+Here is the ultimate, zero-to-hero guide.
+
+Experiment 10: Connection-Oriented Client-Server Applications (TCP/UDP)
+Objective: To configure a Server to host HTTP (TCP) and DNS (UDP) services, and verify client access using a Web Browser.
+
+Phase 1: Adding the Devices
+Open a brand new blank file in Packet Tracer.
+
+Add the Switch:
+
+Network Devices > Switches > Drag 1 (2960) switch into the middle.
+
+Add the End Devices:
+
+End Devices > Drag 1 PC (Client) to the left side.
+
+End Devices > Drag 1 Server (Server-PT) to the right side.
+
+Phase 2: Cabling the Network
+Click the Connections icon (lightning bolt) > Copper Straight-Through (solid black line).
+
+Connect PC0 (FastEthernet0) to Switch0 (FastEthernet0/1).
+
+Connect Server0 (FastEthernet0) to Switch0 (FastEthernet0/2).
+
+(Wait for the green triangles).
+
+Phase 3: Configuring IP Addresses
+Rule: Both devices are on the same network, so they don't need a router. We will still fill out the Gateway just for best practice.
+
+PC0 (Client):
+
+Click PC0 > Desktop > IP Configuration.
+
+IP Address: 192.168.1.10
+
+Subnet Mask: 255.255.255.0
+
+Default Gateway: 192.168.1.1 (Leave it as the standard gateway).
+
+Server0:
+
+Click Server0 > Desktop > IP Configuration.
+
+IP Address: 192.168.1.100 (Servers usually get static .100 or higher IPs).
+
+Subnet Mask: 255.255.255.0
+
+Default Gateway: 192.168.1.1
+
+Phase 4: Configuring the HTTP Server (TCP)
+Rule: HTTP (Hypertext Transfer Protocol) uses TCP because it is connection-oriented. It ensures the web page loads completely and without errors.
+
+Click on Server0.
+
+Go to the Services tab at the top.
+
+Click on HTTP in the left menu.
+
+Ensure the HTTP service is ON (the radio button next to "On" should be selected).
+
+Look at the index.html code box. You can scroll down and find the <h1> tags.
+
+Change the text inside to say: <h1>Welcome to Exp 10: The TCP Web Server!</h1>
+
+Click the Save button at the bottom of the code box.
+
+Phase 5: Configuring the DNS Server (UDP)
+Rule: DNS (Domain Name System) uses UDP because it is connectionless and fast. It just asks "What is the IP for this name?" and gets a quick reply.
+
+Still on Server0, go to the Services tab.
+
+Click on DNS in the left menu.
+
+Ensure the DNS Service is ON.
+
+In the Name box, type: www.explab.com
+
+In the Address box, type: 192.168.1.100 (The server's own IP).
+
+Click the Add button. You should see it appear in the list below.
+
+Phase 6: The Client Test (HTTP / TCP)
+Click on PC0 > Desktop > Web Browser.
+
+In the URL bar at the top, type: http://192.168.1.100 and press Enter.
+
+What to expect: The web page should load instantly, and you will see your custom text: "Welcome to Exp 10: The TCP Web Server!"
+
+Phase 7: The Client Test (DNS / UDP)
+Still in the Web Browser on PC0, type: http://www.explab.com and press Enter.
+
+What to expect: The page should load again!
+
+Why this matters: PC0 just used UDP to ask the server for the IP of www.explab.com, and then used TCP to load the page.
+
+Phase 8: Make the File Look Professional
+Use the Place Note tool (sticky note at the top) to add labels:
+
+Under PC0: PC0: 192.168.1.10
+
+Under Server0: Server0: 192.168.1.100 (HTTP + DNS)
+
+Leave the Web Browser window open on PC0 showing the successful www.explab.com page.
+
+Go to File > Save As > Name it Exp_10_Client_Server.pkt.
+
+💡 Troubleshooting
+The web page fails to load: Check the Server's HTTP service. Make sure it is turned ON and you clicked "Save" after editing the HTML.
+
+The www.explab.com URL fails, but the IP address works: Your DNS is wrong. Go back to Phase 5 and ensure the Name is exactly www.explab.com and the Address is 192.168.1.100.
+
+The browser says "Host Name Unresolved": PC0 cannot reach the DNS server. Check that the cables are green and the IP addresses match.
+
+next
+Here is the final masterclass guide for Experiment 12 (Wireshark / Packet Analysis).
+
+Since Experiment 11 is pure Python code (which we already covered), Experiment 12 is the perfect way to finish your Packet Tracer journey. We are going to use Packet Tracer's Simulation Mode to act exactly like Wireshark, capturing a packet and analyzing its OSI layers.
+
+Experiment 12: Exploring Tools (Wireshark Simulation)
+Objective: To use Packet Tracer's Simulation Mode to capture network traffic, analyze TCP/IP packet headers, and understand the OSI Model in action.
+
+Phase 1: Adding the Devices
+Open a brand new blank file.
+
+Add the Router: Network Devices > Routers > Drag 1 (1941) to the middle.
+
+Add the Switch: Network Devices > Switches > Drag 1 (2960) to the left.
+
+Add the PCs: End Devices > Drag 1 PC to the left of the switch.
+
+Add the Server: End Devices > Drag 1 Server (Server-PT) to the right of the router.
+
+Phase 2: Cabling the Network
+Click Connections (lightning bolt) > Copper Straight-Through.
+
+PC0 (Fa0) --- Switch0 (Fa0/1)
+
+Switch0 (Gig0/1) --- Router0 (Gig0/0)
+
+Router0 (Gig0/1) --- Server0 (Fa0)
+
+Phase 3: Configuring IP Addresses
+Rule: We are simulating a small office (PC0) accessing the internet (Server0).
+
+PC0:
+
+IP: 192.168.1.10 | Mask: 255.255.255.0 | Gateway: 192.168.1.1
+
+Server0:
+
+IP: 8.8.8.8 | Mask: 255.255.255.0 | Gateway: 8.8.8.1 (Simulating Google's public DNS)
+
+Router0 (CLI):
+
+text
+enable
+configure terminal
+interface Gig0/0
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+exit
+interface Gig0/1
+ip address 8.8.8.1 255.255.255.0
+no shutdown
+exit
+(Wait for all cables to turn green).
+
+Phase 4: Set up the Web Server
+Click Server0 > Services tab > HTTP.
+
+Turn HTTP ON.
+
+Edit the HTML to say: Welcome to the Exp 12 Capstone Web Server! and click Save.
+
+Phase 5: The Wireshark Simulation (The Core of Exp 12)
+Now we will capture the packet exactly like Wireshark does.
+
+Enter Simulation Mode: Look at the bottom right corner of your Packet Tracer screen. Click the Simulation button (the stopwatch icon).
+
+The screen will turn slightly grey, and an Event List will appear on the right side.
+
+Set the Filter:
+
+On the right panel, click Edit Filters (or the little funnel icon).
+
+Select the IPv4 tab.
+
+Uncheck everything. Then scroll down and check HTTP and TCP.
+
+Close the filter window. (This prevents us from seeing useless background traffic like STP or ARP).
+
+Generate the Traffic:
+
+Click PC0 > Desktop > Web Browser.
+
+Type http://8.8.8.8 and press Enter.
+
+The Magic: Notice that the web page didn't load instantly. The simulation has paused. Look at the Event List on the right; you will see TCP/HTTP packets waiting to move.
+
+Step through the network: At the bottom of the screen, click the Capture/Forward button (the button with the arrow pointing right).
+
+An envelope icon will move from PC0 to the Switch, then to the Router.
+
+Capture the Data: Click on the envelope icon when it is sitting on the Router.
+
+A window will pop up called PDU Information.
+
+Phase 6: Analyzing the Packet (The Wireshark Details)
+In the PDU Information window, click the Outbound PDU Details tab. You are now looking at the exact same data Wireshark would show you. Here is what you are looking at (for your lab report):
+
+Layer 2 (Ethernet II): Look at the Source MAC and Destination MAC addresses. This is how the switch moves the frame.
+
+Layer 3 (IPv4): Look at the Source IP (192.168.1.10) and Destination IP (8.8.8.8). This is how the router routes the packet.
+
+Layer 4 (TCP): Look at the Source Port (a random high number like 1025) and the Destination Port (80 for HTTP). This is how the server knows it's a web request.
+
+Phase 7: Make the File Look Professional
+Leave the PDU Information window open on your screen (this is your proof).
+
+Use the Place Note tool to add: Exp 12: Packet Capture and OSI Analysis via Simulation Mode.
+
+Go to File > Save As > Name it Exp_12_Wireshark_Simulation.pkt.
+
+(Optional but highly recommended): Take a screenshot of the PDU Details window for your Word document.
+
+💡 Understanding the "Simulation Mode"
+If your instructor asks why we use this, you can explain:
+
+"Wireshark captures real packets on a live network. Packet Tracer's Simulation Mode does the exact same thing, but it freezes time so we can inspect the packet headers layer by layer (Layer 2, 3, and 4) to see exactly how the TCP handshake and HTTP requests work."
+
+Congratulations! You have officially completed the entire lab manual. You have built LANs, routed networks, configured NAT, set up OSPF, hosted web servers, and captured packets. You are now ready to submit your files and ace your lab exam
